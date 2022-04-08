@@ -27,11 +27,4 @@ public class DropDawn {
         driver.findElement(By.xpath(String.format("//span[text()='%s']", optional))).click();
 
     }
-
-
 }
-
-
-//label[text()='Salutation']//..//..//div/button
-
-//button[data-value='Dr.']

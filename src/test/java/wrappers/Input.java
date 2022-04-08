@@ -38,13 +38,9 @@ public class Input {
         driver.findElement(By.xpath(String.format("//span//strong[text()='%s']", text))).click();
 
     }
-
-
-
-
 }
 
 
 
-//label[text()='Phone']//..//..//div
+
 

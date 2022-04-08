@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+import java.time.Duration;
+
+public abstract class BasePage {
 
     WebDriver driver;
     WebDriverWait wait;
@@ -16,8 +18,9 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
+
 
     public void waitForPageLoaded() {
         new ExpectedCondition<Boolean>() {
@@ -26,4 +29,8 @@ public class BasePage {
             }
         };
     }
+
+    public abstract BasePage isPageOpened();
+    //TODO implement opening of the page
+//    public abstract BasePage openPage();
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import dto.Contact;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,49 +12,43 @@ import wrappers.TextArea;
 
 public class NewContactModal extends BasePage {
 
-    public static final By NEW_CONTACT = By.cssSelector("a[title=New]");
     public static final By SAVE_BUTTON = By.xpath("//div[contains(@class, 'modal-body')]//button[@name='SaveEdit']");
 
     public NewContactModal(WebDriver driver) {
         super(driver);
     }
 
-    @Step("Go to page 'Contacts'")
-    public void open() {
-        driver.get(baseUrl + "/o/Contact/list?filterName=Recent");
-        waitForPageLoaded();
+    @Override
+    public NewContactModal isPageOpened() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SAVE_BUTTON));
+        return this;
     }
 
-    @Step("Click button 'New contact'")
-    public void clickNewContact() {
-        driver.findElement(NEW_CONTACT).click();
-    }
+
 
     @Step("Input information new contact")
-    public void create(String firstName, String lastName, String phone, String mobile, String typeSalutation,
-                       String email, String title, String fax, String typeLeadSource, String text,
-                       String accountName) {
+    public NewContactModal create(Contact contact) {
 
-        new Input(driver, "First Name").writeContactInfo(firstName);
-        new Input(driver, "Last Name").writeContactInfo(lastName);
-        new Input(driver, "Phone").writeContactInfo(phone);
-        new Input(driver, "Mobile").writeContactInfo(mobile);
-        new DropDawn(driver, "Salutation").selectInfoContact(typeSalutation);
-        new Input(driver, "Email").writeContactInfo(email);
-        new Input(driver, "Title").writeContactInfo(title);
-        new Input(driver, "Fax").writeContactInfo(fax);
-        new DropDawn(driver, "Lead Source").selectInfoContact(typeLeadSource);
-        new TextArea(driver, "Mailing Street").writeTextInInfoContactCreate(text);
-        new Input(driver, "Account Name").writeAndSelect(accountName);
+        new Input(driver, "First Name").writeContactInfo(contact.getFirstName());
+        new Input(driver, "Last Name").writeContactInfo(contact.getLastName());
+        new Input(driver, "Phone").writeContactInfo(contact.getPhone());
+        new Input(driver, "Mobile").writeContactInfo(contact.getMobile());
+        new DropDawn(driver, "Salutation").selectInfoContact(contact.getTypeSalutation());
+        new Input(driver, "Email").writeContactInfo(contact.getEmail());
+        new Input(driver, "Title").writeContactInfo(contact.getTitle());
+        new Input(driver, "Fax").writeContactInfo(contact.getFax());
+        new DropDawn(driver, "Lead Source").selectInfoContact(contact.getTypeLeadSource());
+        new TextArea(driver, "Mailing Street").writeTextInInfoContactCreate(contact.getText());
+        new Input(driver, "Account Name").writeAndSelect(contact.getAccountName());
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(SAVE_BUTTON)));
+
+        return this;
     }
 
     @Step("Save information new contact")
     public void saveInfoContact() {
         driver.findElement(SAVE_BUTTON).click();
-        waitForPageLoaded();
     }
-
 }
 
 
