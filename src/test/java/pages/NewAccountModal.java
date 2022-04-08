@@ -48,10 +48,4 @@ public class NewAccountModal extends BasePage {
 
         return this;
     }
-
-    @Step("Save information new account")
-    public void saveInfoAccount() {
-        driver.findElement(SAVE_BUTTON).click();
-        waitForPageLoaded();
-    }
 }

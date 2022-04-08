@@ -1,5 +1,7 @@
 package pages;
 
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -12,6 +14,7 @@ public abstract class BasePage {
     WebDriver driver;
     WebDriverWait wait;
 
+    public static final By SAVE_BUTTON = By.cssSelector("[title=Save]");
 
     String loginURL = "https://login.salesforce.com/";
     String baseUrl = "https://skyeng3.lightning.force.com/lightning";
@@ -29,6 +32,13 @@ public abstract class BasePage {
             }
         };
     }
+
+    @Step("Save information new account")
+    public void save() {
+        driver.findElement(SAVE_BUTTON).click();
+        waitForPageLoaded();
+    }
+
 
     public abstract BasePage isPageOpened();
     //TODO implement opening of the page

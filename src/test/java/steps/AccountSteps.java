@@ -24,6 +24,6 @@ public class AccountSteps {
                 .clickNewAccount()
                 .isPageOpened()
                 .create(account)
-                .saveInfoAccount();
+                .save();
     }
 }

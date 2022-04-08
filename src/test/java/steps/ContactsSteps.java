@@ -24,6 +24,6 @@ public class ContactsSteps {
                 .clickNewContact()
                 .isPageOpened()
                 .create(contact)
-                .saveInfoContact();
+                .save();
     }
 }

@@ -44,11 +44,6 @@ public class NewContactModal extends BasePage {
 
         return this;
     }
-
-    @Step("Save information new contact")
-    public void saveInfoContact() {
-        driver.findElement(SAVE_BUTTON).click();
-    }
 }
 
 
