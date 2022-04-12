@@ -5,9 +5,9 @@ import tests.base.BaseTest;
 
 public class LoginTest extends BaseTest {
 
-    @Test (description = "Log in")
+    @Test(description = "Log in")
     public void login() {
-        loginSteps.login();
+        loginSteps.login(USER, PASSWORD);
     }
 }
 

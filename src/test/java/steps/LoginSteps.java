@@ -1,14 +1,12 @@
 package steps;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.LoginPage;
 
-import static org.testng.Assert.assertEquals;
-import static tests.base.BaseTest.PASSWORD;
-import static tests.base.BaseTest.USER;
-
+@Log4j2
 public class LoginSteps {
 
     LoginPage loginPage;
@@ -19,12 +17,13 @@ public class LoginSteps {
         homePage = new HomePage(driver);
     }
 
-    @Step("Log in'")
-    public void login() {
+    @Step("Log in by '{user}' using password '{password}'")
+    public void login(String user, String password) {
+        log.info("Log in by {} using password {}", user, password);
         loginPage
                 .open()
                 .isPageOpened()
-                .login(USER, PASSWORD)
+                .login(user, password)
                 .isPageOpened();
     }
 }

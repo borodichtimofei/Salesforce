@@ -8,10 +8,19 @@ public class NewContactTest extends BaseTest {
 
     @Test(description = "Create new contact")
     public void createNewContact() {
-        loginSteps.login();
-        Contact contact = new Contact("Timo", "Bo", "123456", "654321",
-                "Mr.", "sad@by.by", "123456", "123456", "On Site",
-                "text", "TMS");
+        loginSteps.login(USER, PASSWORD);
+        Contact contact = Contact.builder()
+                .firstName("Timo")
+                .lastName("Bo")
+                .phone("123456")
+                .mobile("654321")
+                .typeSalutation("Mr.")
+                .email("test@test.by")
+                .title("123456")
+                .typeLeadSource("On Site")
+                .text("text")
+                .accountName("TMS")
+                .build();
         contactsSteps.create(contact);
     }
 }

@@ -8,11 +8,26 @@ public class NewAccountTest extends BaseTest {
 
     @Test(description = "Create new Account")
     public void createNewAccount() {
-        loginSteps.login();
-        Account account = new Account("TMS", "Test Company LTD", "test-company.by",
-                "7777777", "8888888", "20", "1000", "Minsk", "Minsk", "221122",
-                "Belarus", "Analyst", "Apparel", "text 1", "text 2",
-                "text 3");
+        loginSteps.login(USER, PASSWORD);
+        Account account = Account.builder()
+                .accountName("TMS")
+                .parentAccountName("Test Company LTD")
+                .website("test-company.by")
+                .phone("7777777")
+                .fax("8888888")
+                .employees("20")
+                .revenue("1000")
+                .city("Minsk")
+                .state("Minsk1")
+                .zipCode("12345")
+                .country("Belarus")
+                .type("Analyst")
+                .industryType("Apparel")
+                .descriptionText("text1")
+                .billingStreetText("text2")
+                .shippingStreetText("text3")
+                .build();
+
 //        Account account = AccountFactory.getAccount("Analyst", "Apparel");
         accountSteps.create(account);
     }
