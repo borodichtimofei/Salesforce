@@ -23,9 +23,9 @@ public class NewAccountTest extends BaseTest {
                 .country("Belarus")
                 .type("Analyst")
                 .industryType("Apparel")
-                .descriptionText("text1")
-                .billingStreetText("text2")
-                .shippingStreetText("text3")
+                .descriptionText("text2")
+                .billingStreetText("text3")
+                .shippingStreetText("text4")
                 .build();
 
 //        Account account = AccountFactory.getAccount("Analyst", "Apparel");
