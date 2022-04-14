@@ -30,7 +30,7 @@ public class BaseTest {
     protected LoginSteps loginSteps;
     protected ContactsSteps contactsSteps;
 
-    public static final String USER = "borokko1980-rcsm@force.com";
+    public static final String USER = "borodich.timofei-v61f@force.com";
     public static final String PASSWORD = "Test1980";
 
     @BeforeMethod(description = "Opening browser")
