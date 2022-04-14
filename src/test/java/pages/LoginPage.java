@@ -33,7 +33,7 @@ public class LoginPage extends BasePage {
 
     @Step("Log in by '{user}' using password '{password}'")
     public HomePage login(String user, String password) {
-        log.info("Log in by '{user}' using password '{password}'");
+        log.info("Log in by {} using password {}", user, password);
         driver.findElement(USER_INPUT).sendKeys(user);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();

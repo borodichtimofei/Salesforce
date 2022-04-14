@@ -17,10 +17,4 @@
             </class>
         </classes>
     </test>
-    <test name="NewContact">
-        <classes>
-            <class name="tests.NewContactTest">
-            </class>
-        </classes>
-    </test>
 </suite>
